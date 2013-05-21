@@ -1,26 +1,31 @@
 function draw(){
-    buffer.clearRect(0,0,width,height);
+    buffer.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
 
     /*add 2 randomly placed drops*/
     i = 1;
     do{
         drops.push([
-            random_number(width),
-            0,
-            2,
-            7
+            random_number(width),/*x*/
+            0,/*y*/
+            2,/*width*/
+            7/*height*/
         ])
     }while(i--);
 
-    i = drops.length-1;
+    i = drops.length - 1;
     buffer.fillStyle = '#aaf';
     do{
-        if(drops[i][1]>height){
+        if(drops[i][1] > height){
             /*remove drop that reached bottom of screen*/
             drops.splice(i,1)
         }else{
             /*update drop position*/
-            drops[i][1] += Math.random()*9+9;
+            drops[i][1] += Math.random() * 9 + 9;
 
             /*draw drop*/
             buffer.fillRect(
@@ -32,14 +37,22 @@ function draw(){
         }
     }while(i--)
 
-    canvas.clearRect(0,0,width,height);
-    canvas.drawImage(get('buffer'),0,0)
+    canvas.clearRect(
+        0,
+        0,
+        width,height
+    );
+    canvas.drawImage(
+        get('buffer'),
+        0,
+        0
+    )
 }
 function get(i){
     return document.getElementById(i)
 }
 function random_number(i){
-    return Math.floor(Math.random()*i)
+    return Math.floor(Math.random() * i)
 }
 function resize(){
     width = get('buffer').width = get('canvas').width = window.innerWidth;
