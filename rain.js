@@ -48,12 +48,15 @@ function draw(){
         0
     )
 }
+
 function get(i){
     return document.getElementById(i)
 }
+
 function random_number(i){
     return Math.floor(Math.random() * i)
 }
+
 function resize(){
     width = get('buffer').width = get('canvas').width = window.innerWidth;
     height = get('buffer').height = get('canvas').height = window.innerHeight
