@@ -40,7 +40,8 @@ function draw(){
     canvas.clearRect(
         0,
         0,
-        width,height
+        width,
+        height
     );
     canvas.drawImage(
         get('buffer'),
