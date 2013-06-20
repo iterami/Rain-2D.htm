@@ -14,7 +14,7 @@ function draw(){
             0,/*y*/
             2,/*width*/
             7/*height*/
-        ])
+        ]);
     }while(i--);
 
     i = drops.length - 1;
@@ -22,7 +22,7 @@ function draw(){
     do{
         if(drops[i][1] > height){
             /*remove drop that reached bottom of screen*/
-            drops.splice(i,1)
+            drops.splice(i, 1);
         }else{
             /*update drop position*/
             drops[i][1] += Math.random() * 9 + 9;
@@ -33,9 +33,9 @@ function draw(){
                 drops[i][1],
                 drops[i][2],
                 drops[i][3]
-            )
+            );
         }
-    }while(i--)
+    }while(i--);
 
     canvas.clearRect(
         0,
@@ -47,20 +47,20 @@ function draw(){
         get('buffer'),
         0,
         0
-    )
+    );
 }
 
 function get(i){
-    return document.getElementById(i)
+    return document.getElementById(i);
 }
 
 function random_number(i){
-    return Math.floor(Math.random() * i)
+    return Math.floor(Math.random() * i);
 }
 
 function resize(){
     width = get('buffer').width = get('canvas').width = window.innerWidth;
-    height = get('buffer').height = get('canvas').height = window.innerHeight
+    height = get('buffer').height = get('canvas').height = window.innerHeight;
 }
 
 var buffer = get('buffer').getContext('2d');
@@ -72,6 +72,6 @@ var width = 0;
 
 resize();
 
-setInterval('draw()',30);
+setInterval('draw()', 30);
 
-window.onresize = resize
+window.onresize = resize;

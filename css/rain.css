@@ -1,11 +1,11 @@
 canvas{
-    background:#000;
-    left:0;
-    position:absolute;
-    top:0;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    user-select:none
+    background: #000;
+    left: 0;
+    position: absolute;
+    top: 0;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
