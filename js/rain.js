@@ -23,6 +23,7 @@ function draw(){
         if(drops[i][1] > height){
             /* remove drop that reached bottom of screen */
             drops.splice(i, 1);
+
         }else{
             /* update drop position */
             drops[i][1] += Math.random() * 9 + 9;
@@ -59,8 +60,13 @@ function random_number(i){
 }
 
 function resize(){
-    width = get('buffer').width = get('canvas').width = window.innerWidth;
-    height = get('buffer').height = get('canvas').height = window.innerHeight;
+    width = window.innerWidth;
+    get('buffer').width = width;
+    get('canvas').width = width;
+
+    height = window.innerHeight;
+    get('buffer').height = height;
+    get('canvas').height = height;
 }
 
 var buffer = get('buffer').getContext('2d');
