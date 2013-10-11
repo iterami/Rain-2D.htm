@@ -10,7 +10,7 @@ function draw(){
     i = 1;
     do{
         drops.push([
-            random_number(width),// x
+            Math.floor(Math.random() * width),// x
             0,// y
             2,// width
             7// height
@@ -53,10 +53,6 @@ function draw(){
 
 function get(i){
     return document.getElementById(i);
-}
-
-function random_number(i){
-    return Math.floor(Math.random() * i);
 }
 
 function resize(){
