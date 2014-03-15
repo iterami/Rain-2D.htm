@@ -1,19 +1,19 @@
 function draw(){
     buffer.clearRect(
-        0,
-        0,
-        width,
-        height
+      0,
+      0,
+      width,
+      height
     );
 
     // add 2 randomly placed drops
     i = 1;
     do{
         drops.push([
-            Math.floor(Math.random() * width),// x
-            0,// y
-            2,// width
-            7// height
+          Math.floor(Math.random() * width),// x
+          0,// y
+          2,// width
+          7// height
         ]);
     }while(i--);
 
@@ -30,43 +30,39 @@ function draw(){
 
             // draw drop
             buffer.fillRect(
-                drops[i][0],
-                drops[i][1],
-                drops[i][2],
-                drops[i][3]
+              drops[i][0],
+              drops[i][1],
+              drops[i][2],
+              drops[i][3]
             );
         }
     }while(i--);
 
     canvas.clearRect(
-        0,
-        0,
-        width,
-        height
+      0,
+      0,
+      width,
+      height
     );
     canvas.drawImage(
-        get('buffer'),
-        0,
-        0
+      document.getElementById('buffer'),
+      0,
+      0
     );
-}
-
-function get(i){
-    return document.getElementById(i);
 }
 
 function resize(){
     width = window.innerWidth;
-    get('buffer').width = width;
-    get('canvas').width = width;
+    document.getElementById('buffer').width = width;
+    document.getElementById('canvas').width = width;
 
     height = window.innerHeight;
-    get('buffer').height = height;
-    get('canvas').height = height;
+    document.getElementById('buffer').height = height;
+    document.getElementById('canvas').height = height;
 }
 
-var buffer = get('buffer').getContext('2d');
-var canvas = get('canvas').getContext('2d');
+var buffer = document.getElementById('buffer').getContext('2d');
+var canvas = document.getElementById('canvas').getContext('2d');
 var drops = [];
 var height = 0;
 var i = 0;
