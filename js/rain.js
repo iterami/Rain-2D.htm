@@ -7,7 +7,7 @@ function draw(){
     );
 
     // add 2 randomly placed drops
-    i = 1;
+    var loop_counter = 1;
     do{
         drops.push([
           Math.floor(Math.random() * width),// x
@@ -15,28 +15,31 @@ function draw(){
           2,// width
           7// height
         ]);
-    }while(i--);
+    }while(loop_counter--);
 
-    i = drops.length - 1;
+    loop_counter = drops.length - 1;
     buffer.fillStyle = '#aaf';
     do{
-        if(drops[i][1] > height){
+        if(drops[loop_counter][1] > height){
             // remove drop that reached bottom of screen
-            drops.splice(i, 1);
+            drops.splice(
+              loop_counter,
+              1
+            );
 
         }else{
             // update drop position
-            drops[i][1] += Math.random() * 9 + 9;
+            drops[loop_counter][1] += Math.random() * 9 + 9;
 
             // draw drop
             buffer.fillRect(
-              drops[i][0],
-              drops[i][1],
-              drops[i][2],
-              drops[i][3]
+              drops[loop_counter][0],
+              drops[loop_counter][1],
+              drops[loop_counter][2],
+              drops[loop_counter][3]
             );
         }
-    }while(i--);
+    }while(loop_counter--);
 
     canvas.clearRect(
       0,
@@ -52,24 +55,22 @@ function draw(){
 }
 
 function resize(){
-    width = window.innerWidth;
-    document.getElementById('buffer').width = width;
-    document.getElementById('canvas').width = width;
-
     height = window.innerHeight;
     document.getElementById('buffer').height = height;
     document.getElementById('canvas').height = height;
+
+    width = window.innerWidth;
+    document.getElementById('buffer').width = width;
+    document.getElementById('canvas').width = width;
 }
 
 var buffer = document.getElementById('buffer').getContext('2d');
 var canvas = document.getElementById('canvas').getContext('2d');
 var drops = [];
 var height = 0;
-var i = 0;
 var width = 0;
 
 resize();
+window.onresize = resize;
 
 setInterval('draw()', 30);
-
-window.onresize = resize;
