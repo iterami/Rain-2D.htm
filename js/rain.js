@@ -73,4 +73,7 @@ var width = 0;
 resize();
 window.onresize = resize;
 
-setInterval('draw()', 30);
+setInterval(
+  'draw()',
+  30
+);
