@@ -11,7 +11,7 @@ function draw(){
     do{
         drops.push([
           Math.floor(Math.random() * width),// x
-          0,// y
+          -99,// y
           2,// width
           7// height
         ]);
