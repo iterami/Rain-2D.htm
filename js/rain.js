@@ -6,14 +6,14 @@ function draw(){
       height
     );
 
-    // add 2 randomly placed drops
+    // aAd 2 randomly placed drops.
     var loop_counter = 1;
     do{
         drops.push([
-          Math.floor(Math.random() * width),// x
-          -99,// y
-          2,// width
-          7// height
+          Math.floor(Math.random() * width),// X
+          -99,// Y
+          2,// Width
+          7,// Height
         ]);
     }while(loop_counter--);
 
@@ -21,17 +21,17 @@ function draw(){
     buffer.fillStyle = '#aaf';
     do{
         if(drops[loop_counter][1] > height){
-            // remove drop that reached bottom of screen
+            // Remove drop that reached bottom of screen.
             drops.splice(
               loop_counter,
               1
             );
 
         }else{
-            // update drop position
+            // Update drop position.
             drops[loop_counter][1] += Math.random() * 9 + 9;
 
-            // draw drop
+            // Draw drop.
             buffer.fillRect(
               drops[loop_counter][0],
               drops[loop_counter][1],
