@@ -6,7 +6,7 @@ function draw(){
       height
     );
 
-    // aAd 2 randomly placed drops.
+    // Add 2 randomly placed drops.
     var loop_counter = 1;
     do{
         drops.push([
