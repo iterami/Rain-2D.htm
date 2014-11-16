@@ -101,7 +101,8 @@ var width = 0;
 
 window.onload = init;
 
-window.onmousedown = function(e){
+window.onmousedown =
+  window.ontouchstart = function(e){
     object[0] = e.pageX - 100;
     object[1] = e.pageY - 20;
 };
