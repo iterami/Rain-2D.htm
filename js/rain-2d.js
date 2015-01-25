@@ -48,21 +48,6 @@ function draw(){
     window.requestAnimationFrame(draw);
 }
 
-function init(){
-    resize();
-
-    object[0] = width / 2 - 100;
-    object[1] = height / 2 - 20;
-
-    create_drop();
-
-    window.requestAnimationFrame(draw);
-    setInterval(
-      'logic()',
-      30
-    );
-}
-
 function logic(){
     // Add 2 randomly placed drops.
     var loop_counter = 1;
@@ -114,7 +99,20 @@ var object = [
 ];
 var width = 0;
 
-window.onload = init;
+window.onload = function(){
+    resize();
+
+    object[0] = width / 2 - 100;
+    object[1] = height / 2 - 20;
+
+    create_drop();
+
+    window.requestAnimationFrame(draw);
+    setInterval(
+      'logic()',
+      30
+    );
+};
 
 window.onmousedown =
   window.ontouchstart = function(e){
