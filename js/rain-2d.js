@@ -14,16 +14,15 @@ function draw(){
     );
 
     buffer.fillStyle = '#aaf';
-    loop_counter = drops.length - 1;
-    do{
+    for(var drop in drops){
         // Draw drop.
         buffer.fillRect(
-          drops[loop_counter][0],
-          drops[loop_counter][1],
+          drops[drop][0],
+          drops[drop][1],
           2,
           7
         );
-    }while(loop_counter--);
+    }
 
     buffer.fillStyle = '#777';
     buffer.fillRect(
@@ -56,27 +55,24 @@ function logic(){
     }while(loop_counter--);
 
     buffer.fillStyle = '#aaf';
-    loop_counter = drops.length - 1;
-    do{
-        if(drops[loop_counter][1] > height
+    for(var drop in drops){
+        drops[drop][1] += Math.random() * 9 + 9;
+
+        if(drops[drop][1] > height
           || !(
-            drops[loop_counter][0] <= object[0]
-            || drops[loop_counter][1] <= object[1]
-            || drops[loop_counter][0] - 200 >= object[0]
-            || drops[loop_counter][1] - 40 >= object[1]
+            drops[drop][0] <= object[0]
+            || drops[drop][1] <= object[1]
+            || drops[drop][0] - 200 >= object[0]
+            || drops[drop][1] - 40 >= object[1]
           )){
             // Remove drop that reached bottom of screen
             //   or collided with the object.
             drops.splice(
-              loop_counter,
+              drop,
               1
             );
-
-        }else{
-            // Update drop position.
-            drops[loop_counter][1] += Math.random() * 9 + 9;
         }
-    }while(loop_counter--);
+    }
 }
 
 function resize(){
