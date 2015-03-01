@@ -1,10 +1,3 @@
-function create_drop(){
-    drops.push([
-      Math.floor(Math.random() * width),// X
-      -99,// Y
-    ]);
-}
-
 function draw(){
     buffer.clearRect(
       0,
@@ -51,7 +44,10 @@ function logic(){
     // Add 2 randomly placed drops.
     var loop_counter = 1;
     do{
-        create_drop();
+        drops.push([
+          Math.floor(Math.random() * width),// X
+          -99,// Y
+        ]);
     }while(loop_counter--);
 
     buffer.fillStyle = '#aaf';
@@ -97,8 +93,6 @@ window.onload = function(){
 
     object[0] = width / 2 - 100;
     object[1] = height / 2 - 20;
-
-    create_drop();
 
     window.requestAnimationFrame(draw);
     window.setInterval(
