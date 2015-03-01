@@ -67,10 +67,7 @@ function logic(){
           )){
             // Remove drop that reached bottom of screen
             //   or collided with the object.
-            drops.splice(
-              drop,
-              1
-            );
+            delete drops[drop];
         }
     }
 }
