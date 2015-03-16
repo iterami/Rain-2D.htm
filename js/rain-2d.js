@@ -6,9 +6,9 @@ function draw(){
       height
     );
 
+    // Draw drops.
     buffer.fillStyle = '#aaf';
     for(var drop in drops){
-        // Draw drop.
         buffer.fillRect(
           drops[drop][0],
           drops[drop][1],
@@ -17,6 +17,7 @@ function draw(){
         );
     }
 
+    // Draw object.
     buffer.fillStyle = '#777';
     buffer.fillRect(
       object[0],
@@ -50,10 +51,12 @@ function logic(){
         ]);
     }while(loop_counter--);
 
-    buffer.fillStyle = '#aaf';
+    // Update drop positions.
     for(var drop in drops){
         drops[drop][1] += Math.random() * 9 + 9;
 
+        // Delete drops below bottom of screen
+        //   or that collided with the object.
         if(drops[drop][1] > height
           || !(
             drops[drop][0] <= object[0]
@@ -61,8 +64,6 @@ function logic(){
             || drops[drop][0] - 200 >= object[0]
             || drops[drop][1] - 40 >= object[1]
           )){
-            // Remove drop that reached bottom of screen
-            //   or collided with the object.
             delete drops[drop];
         }
     }
@@ -84,7 +85,7 @@ var drops = [];
 var height = 0;
 var object = [
   0,
-  0
+  0,
 ];
 var width = 0;
 
