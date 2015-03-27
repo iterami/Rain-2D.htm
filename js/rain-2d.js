@@ -81,6 +81,7 @@ function resize(){
 
 var buffer = document.getElementById('buffer').getContext('2d');
 var canvas = document.getElementById('canvas').getContext('2d');
+var drag = false;
 var drops = [];
 var height = 0;
 var object = [
@@ -104,8 +105,24 @@ window.onload = function(){
 
 window.onmousedown =
   window.ontouchstart = function(e){
+    drag = true;
     object[0] = e.pageX - 100;
     object[1] = e.pageY - 20;
+};
+
+window.onmousemove =
+  window.ontouchmove = function(e){
+    if(!drag){
+        return;
+    }
+
+    object[0] = e.pageX - 100;
+    object[1] = e.pageY - 20;
+}
+
+window.onmouseup =
+  window.ontouchend = function(e){
+    drag = false;
 };
 
 window.onresize = resize;
