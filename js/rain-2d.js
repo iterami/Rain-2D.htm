@@ -64,7 +64,10 @@ function logic(){
             || drops[drop][0] - 200 >= object[0]
             || drops[drop][1] - 40 >= object[1]
           )){
-            delete drops[drop];
+            drops.splice(
+              drop,
+              1
+            );
         }
     }
 }
