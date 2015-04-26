@@ -6,5 +6,5 @@ A falling rain visualization.
 ---
 
 Action        | Key
---------------|------
-Move Obstacle | Click
+--------------|------------
+Move Obstacle | Mouse Click
