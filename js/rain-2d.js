@@ -118,7 +118,6 @@ window.onkeydown = function(e){
           ? drop_counter - 1
           : 0;
     }
-    console.log(drop_counter);
 };
 
 window.onload = function(e){
