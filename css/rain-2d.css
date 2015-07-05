@@ -5,3 +5,6 @@ canvas{
     position: absolute;
     top: 0;
 }
+#buffer{
+    display: none;
+}
