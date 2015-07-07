@@ -1,3 +1,5 @@
+'use strict';
+
 function draw(){
     buffer.clearRect(
       0,
