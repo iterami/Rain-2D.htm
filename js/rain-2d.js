@@ -111,11 +111,11 @@ window.onkeydown = function(e){
     var key = e.keyCode || e.which;
 
     // +: drop_counter++;
-    if(key == 187){
+    if(key === 187){
         drop_counter++;
 
     // -: drop_counter--;
-    }else if(key == 189){
+    }else if(key === 189){
         drop_counter = drop_counter > 0
           ? drop_counter - 1
           : 0;
