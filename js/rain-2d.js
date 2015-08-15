@@ -95,8 +95,12 @@ function resize(){
     document.getElementById('canvas').width = width;
 }
 
-var buffer = document.getElementById('buffer').getContext('2d');
-var canvas = document.getElementById('canvas').getContext('2d');
+var buffer = document.getElementById('buffer').getContext('2d', {
+  'alpha': false,
+});
+var canvas = document.getElementById('canvas').getContext('2d', {
+  'alpha': false,
+});
 var drag = false;
 var drop_counter = 1;
 var drops = [];

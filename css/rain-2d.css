@@ -5,7 +5,6 @@ body{
     display: none;
 }
 canvas{
-    background: #000;
     cursor: pointer;
     left: 0;
     position: absolute;
