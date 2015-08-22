@@ -19,11 +19,17 @@ function draw(){
         );
     }
 
+    buffer.save();
+    buffer.translate(
+      object['x'],
+      object['y']
+    );
+
     // Draw object.
     buffer.fillStyle = '#777';
     buffer.fillRect(
-      object['x'],
-      object['y'],
+      0,
+      0,
       200,
       40
     );
@@ -35,9 +41,11 @@ function draw(){
     // Draw number of particles.
     buffer.fillText(
       drops.length,
-      5,
-      25
+      0,
+      30
     );
+
+    buffer.restore();
 
     canvas.clearRect(
       0,
