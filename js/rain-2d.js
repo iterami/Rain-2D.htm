@@ -34,11 +34,8 @@ function draw(){
       40
     );
 
-    // Setup text display.
-    buffer.fillStyle = '#fff';
-    buffer.font = '23pt sans-serif';
-
     // Draw number of particles.
+    buffer.fillStyle = '#fff';
     buffer.fillText(
       drops.length,
       0,
@@ -101,6 +98,8 @@ function resize(){
     width = window.innerWidth;
     document.getElementById('buffer').width = width;
     document.getElementById('canvas').width = width;
+
+    buffer.font = '23pt sans-serif';
 }
 
 var buffer = document.getElementById('buffer').getContext('2d', {
