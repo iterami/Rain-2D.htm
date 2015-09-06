@@ -19,30 +19,22 @@ function draw(){
         );
     }
 
-    buffer.save();
-    buffer.translate(
-      object['x'],
-      object['y']
-    );
-
     // Draw object.
     buffer.fillStyle = '#777';
     buffer.fillRect(
-      0,
-      0,
+      object['x'],
+      object['y'],
       200,
-      40
+      -40
     );
 
     // Draw number of particles.
     buffer.fillStyle = '#fff';
     buffer.fillText(
       drops.length,
-      0,
-      30
+      object['x'],
+      object['y']
     );
-
-    buffer.restore();
 
     canvas.clearRect(
       0,
@@ -78,9 +70,9 @@ function logic(){
         if(drops[drop]['y'] > height
           || !(
             drops[drop]['x'] <= object['x']
-            || drops[drop]['y'] <= object['y']
+            || drops[drop]['y'] + 40 <= object['y']
             || drops[drop]['x'] - 200 >= object['x']
-            || drops[drop]['y'] - 40 >= object['y']
+            || drops[drop]['y'] >= object['y']
           )){
             drops.splice(
               drop,
@@ -137,7 +129,7 @@ window.onload = function(e){
     resize();
 
     object['x'] = width / 2 - 100;
-    object['y'] = height / 2 - 20;
+    object['y'] = height / 2;
 
     window.requestAnimationFrame(draw);
     window.setInterval(
@@ -150,7 +142,7 @@ window.onmousedown =
   window.ontouchstart = function(e){
     drag = true;
     object['x'] = e.pageX - 100;
-    object['y'] = e.pageY - 20;
+    object['y'] = e.pageY;
 };
 
 window.onmousemove =
@@ -160,7 +152,7 @@ window.onmousemove =
     }
 
     object['x'] = e.pageX - 100;
-    object['y'] = e.pageY - 20;
+    object['y'] = e.pageY;
 };
 
 window.onmouseup =
