@@ -133,7 +133,7 @@ window.onload = function(e){
 
     window.requestAnimationFrame(draw);
     window.setInterval(
-      'logic()',
+      logic,
       30
     );
 };
