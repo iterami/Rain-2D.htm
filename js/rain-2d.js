@@ -1,13 +1,6 @@
 'use strict';
 
-function draw(){
-    buffer.clearRect(
-      0,
-      0,
-      width,
-      height
-    );
-
+function draw_logic(){
     // Draw drops.
     buffer.fillStyle = '#aaf';
     for(var drop in drops){
@@ -35,20 +28,6 @@ function draw(){
       object['x'],
       object['y']
     );
-
-    canvas.clearRect(
-      0,
-      0,
-      width,
-      height
-    );
-    canvas.drawImage(
-      document.getElementById('buffer'),
-      0,
-      0
-    );
-
-    window.requestAnimationFrame(draw);
 }
 
 function logic(){
@@ -82,33 +61,17 @@ function logic(){
     }
 }
 
-function resize(){
-    height = window.innerHeight;
-    document.getElementById('buffer').height = height;
-    document.getElementById('canvas').height = height;
-
-    width = window.innerWidth;
-    document.getElementById('buffer').width = width;
-    document.getElementById('canvas').width = width;
-
+function resize_logic(){
     buffer.font = '23pt sans-serif';
 }
 
-var buffer = document.getElementById('buffer').getContext('2d', {
-  'alpha': false,
-});
-var canvas = document.getElementById('canvas').getContext('2d', {
-  'alpha': false,
-});
 var drag = false;
 var drop_counter = 1;
 var drops = [];
-var height = 0;
 var object = {
   'x': 0,
   'y': 0,
 };
-var width = 0;
 
 window.onkeydown = function(e){
     var key = e.keyCode || e.which;
@@ -126,16 +89,10 @@ window.onkeydown = function(e){
 };
 
 window.onload = function(e){
-    resize();
+    init_canvas();
 
     object['x'] = width / 2 - 100;
     object['y'] = height / 2;
-
-    window.requestAnimationFrame(draw);
-    window.setInterval(
-      logic,
-      30
-    );
 };
 
 window.onmousedown =
