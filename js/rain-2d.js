@@ -65,7 +65,6 @@ function resize_logic(){
     buffer.font = '23pt sans-serif';
 }
 
-var drag = false;
 var drop_counter = 1;
 var drops = [];
 var object = {
@@ -73,46 +72,43 @@ var object = {
   'y': 0,
 };
 
-window.onkeydown = function(e){
-    var key = e.keyCode || e.which;
-
-    // +: drop_counter++;
-    if(key === 187){
-        drop_counter++;
-
-    // -: drop_counter--;
-    }else if(key === 189){
-        drop_counter = drop_counter > 0
-          ? drop_counter - 1
-          : 0;
-    }
-};
-
 window.onload = function(e){
     init_canvas();
+    init_input(
+      {
+        187: {
+          'todo': function(){
+              drop_counter++;
+          },
+        },
+        189: {
+          'todo': function(){
+              drop_counter = drop_counter > 0
+                ? drop_counter - 1
+                : 0;
+          },
+        },
+      },
+      {
+        'mousedown': {
+          'todo': function(){
+              object['x'] = mouse['x'] - 100;
+              object['y'] = mouse['y'];
+          },
+        },
+        'mousemove': {
+          'todo': function(){
+              if(!mouse['down']){
+                  return;
+              }
+
+              object['x'] = mouse['x'] - 100;
+              object['y'] = mouse['y'];
+          },
+        },
+      }
+    );
 
     object['x'] = width / 2 - 100;
     object['y'] = height / 2;
-};
-
-window.onmousedown =
-  window.ontouchstart = function(e){
-    drag = true;
-    object['x'] = e.pageX - 100;
-    object['y'] = e.pageY;
-};
-
-window.onmousemove =
-  window.ontouchmove = function(e){
-    if(!drag){
-        return;
-    }
-
-    object['x'] = e.pageX - 100;
-    object['y'] = e.pageY;
-};
-
-window.onmouseup =
-  window.ontouchend = function(e){
-    drag = false;
 };
