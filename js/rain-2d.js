@@ -61,10 +61,6 @@ function logic(){
     }
 }
 
-function resize_logic(){
-    buffer.font = font;
-}
-
 var drop_counter = 1;
 var drops = [];
 var object = {
