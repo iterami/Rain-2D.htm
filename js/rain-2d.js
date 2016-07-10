@@ -70,7 +70,7 @@ var object = {
 
 window.onload = function(e){
     init_canvas();
-    init_input(
+    input_init(
       {
         187: {
           'todo': function(){
@@ -88,18 +88,18 @@ window.onload = function(e){
       {
         'mousedown': {
           'todo': function(){
-              object['x'] = mouse['x'] - 100;
-              object['y'] = mouse['y'];
+              object['x'] = input_mouse['x'] - 100;
+              object['y'] = input_mouse['y'];
           },
         },
         'mousemove': {
           'todo': function(){
-              if(!mouse['down']){
+              if(!input_mouse['down']){
                   return;
               }
 
-              object['x'] = mouse['x'] - 100;
-              object['y'] = mouse['y'];
+              object['x'] = input_mouse['x'] - 100;
+              object['y'] = input_mouse['y'];
           },
         },
       }
