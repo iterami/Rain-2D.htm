@@ -61,17 +61,26 @@ function logic(){
     }
 }
 
-var drop_counter = 1;
+function reset(){
+    drops.length = 0;
+    drop_counter = 0;
+    object = {
+      'x': canvas_width / 2 - 100,
+      'y': canvas_height / 2,
+    };
+}
+
+var drop_counter = 0;
 var drops = [];
-var object = {
-  'x': 0,
-  'y': 0,
-};
+var object = {};
 
 window.onload = function(e){
     canvas_init();
     input_init(
       {
+        27: {
+          'todo': reset,
+        },
         187: {
           'todo': function(){
               drop_counter++;
@@ -105,6 +114,5 @@ window.onload = function(e){
       }
     );
 
-    object['x'] = canvas_width / 2 - 100;
-    object['y'] = canvas_height / 2;
+    reset();
 };

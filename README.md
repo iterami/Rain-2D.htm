@@ -10,6 +10,7 @@ Action        | Key
 Less Rain     | -
 More Rain     | +
 Move Obstacle | Mouse Click
+Reset         | Escape
 
 ---
 
