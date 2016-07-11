@@ -2,9 +2,9 @@
 
 function draw_logic(){
     // Draw drops.
-    buffer.fillStyle = '#aaf';
+    canvas_buffer.fillStyle = '#aaf';
     for(var drop in drops){
-        buffer.fillRect(
+        canvas_buffer.fillRect(
           drops[drop]['x'],
           drops[drop]['y'],
           2,
@@ -13,8 +13,8 @@ function draw_logic(){
     }
 
     // Draw object.
-    buffer.fillStyle = '#777';
-    buffer.fillRect(
+    canvas_buffer.fillStyle = '#777';
+    canvas_buffer.fillRect(
       object['x'],
       object['y'],
       200,
@@ -22,8 +22,8 @@ function draw_logic(){
     );
 
     // Draw number of particles.
-    buffer.fillStyle = '#fff';
-    buffer.fillText(
+    canvas_buffer.fillStyle = '#fff';
+    canvas_buffer.fillText(
       drops.length,
       object['x'],
       object['y']
@@ -35,7 +35,7 @@ function logic(){
     var loop_counter = drop_counter;
     do{
         drops.push({
-          'x': Math.floor(Math.random() * width),
+          'x': Math.floor(Math.random() * canvas_width),
           'y': -99,
         });
     }while(loop_counter--);
@@ -46,7 +46,7 @@ function logic(){
 
         // Delete drops below bottom of screen
         //   or that collided with the object.
-        if(drops[drop]['y'] > height
+        if(drops[drop]['y'] > canvas_height
           || !(
             drops[drop]['x'] <= object['x']
             || drops[drop]['y'] + 40 <= object['y']
@@ -69,7 +69,7 @@ var object = {
 };
 
 window.onload = function(e){
-    init_canvas();
+    canvas_init();
     input_init(
       {
         187: {
@@ -105,6 +105,6 @@ window.onload = function(e){
       }
     );
 
-    object['x'] = width / 2 - 100;
-    object['y'] = height / 2;
+    object['x'] = canvas_width / 2 - 100;
+    object['y'] = canvas_height / 2;
 };
