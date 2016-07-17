@@ -35,7 +35,7 @@ function logic(){
     var loop_counter = drop_counter;
     do{
         drops.push({
-          'x': Math.floor(Math.random() * canvas_width),
+          'x': random_integer(canvas_width),
           'y': -99,
         });
     }while(loop_counter--);
