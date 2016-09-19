@@ -5,14 +5,5 @@ A falling rain visualization.
 
 ---
 
-Action        | Key
---------------|------------
-Less Rain     | -
-More Rain     | +
-Move Obstacle | Mouse Click
-Reset         | Escape
-
----
-
 Requires:
 * [iterami/common](https://github.com/iterami/common)
