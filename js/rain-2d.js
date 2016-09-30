@@ -17,8 +17,8 @@ function draw_logic(){
     canvas_buffer.fillRect(
       object['x'],
       object['y'],
-      200,
-      -40
+      object['width'],
+      object['height']
     );
 
     // Draw number of particles.
@@ -42,15 +42,15 @@ function logic(){
 
     // Update drop positions.
     for(var drop in drops){
-        drops[drop]['y'] += Math.random() * 9 + 9;
+        drops[drop]['y'] += random_integer(9) + 9;
 
         // Delete drops below bottom of screen
         //   or that collided with the object.
         if(drops[drop]['y'] > canvas_height
           || !(
             drops[drop]['x'] <= object['x']
-            || drops[drop]['y'] + 40 <= object['y']
-            || drops[drop]['x'] - 200 >= object['x']
+            || drops[drop]['y'] - object['height'] <= object['y']
+            || drops[drop]['x'] - object['width'] >= object['x']
             || drops[drop]['y'] >= object['y']
           )){
             drops.splice(
@@ -65,7 +65,9 @@ function reset(){
     drops.length = 0;
     drop_counter = 0;
     object = {
-      'x': canvas_width / 2 - 100,
+      'height': -40,
+      'width': 200,
+      'x': canvas_width / 2,
       'y': canvas_height / 2,
     };
 }
@@ -97,7 +99,7 @@ window.onload = function(e){
       {
         'mousedown': {
           'todo': function(){
-              object['x'] = input_mouse['x'] - 100;
+              object['x'] = input_mouse['x'];
               object['y'] = input_mouse['y'];
           },
         },
@@ -107,7 +109,7 @@ window.onload = function(e){
                   return;
               }
 
-              object['x'] = input_mouse['x'] - 100;
+              object['x'] = input_mouse['x'];
               object['y'] = input_mouse['y'];
           },
         },
