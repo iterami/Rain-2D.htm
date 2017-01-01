@@ -35,14 +35,18 @@ function logic(){
     var loop_counter = drop_counter;
     do{
         drops.push({
-          'x': random_integer(canvas_width),
+          'x': random_integer({
+            'max': canvas_width,
+          }),
           'y': -99,
         });
     }while(loop_counter--);
 
     // Update drop positions.
     for(var drop in drops){
-        drops[drop]['y'] += random_integer(9) + 9;
+        drops[drop]['y'] += random_integer({
+          'max': 9,
+        }) + 9;
 
         // Delete drops below bottom of screen
         //   or that collided with the object.
