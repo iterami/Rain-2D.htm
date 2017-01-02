@@ -82,8 +82,8 @@ var object = {};
 
 window.onload = function(e){
     canvas_init();
-    input_init(
-      {
+    input_init({
+      'keybinds': {
         27: {
           'todo': reset,
         },
@@ -100,7 +100,7 @@ window.onload = function(e){
           },
         },
       },
-      {
+      'mousebinds': {
         'mousedown': {
           'todo': function(){
               object['x'] = input_mouse['x'];
@@ -117,8 +117,8 @@ window.onload = function(e){
               object['y'] = input_mouse['y'];
           },
         },
-      }
-    );
+      },
+    });
 
     reset();
 };
