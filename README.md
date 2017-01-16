@@ -1,7 +1,7 @@
 iterami/Rain-2D.htm
 -------------------
 
-A falling rain visualization.
+A canvas falling rain visualization.
 
 ---
 
