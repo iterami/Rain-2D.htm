@@ -87,16 +87,16 @@ window.onload = function(e){
         27: {
           'todo': reset,
         },
-        187: {
-          'todo': function(){
-              drop_counter++;
-          },
-        },
-        189: {
+        83: {
           'todo': function(){
               drop_counter = drop_counter > 0
                 ? drop_counter - 1
                 : 0;
+          },
+        },
+        87: {
+          'todo': function(){
+              drop_counter++;
           },
         },
       },
