@@ -89,9 +89,10 @@ window.onload = function(e){
         },
         83: {
           'todo': function(){
-              drop_counter = drop_counter > 0
-                ? drop_counter - 1
-                : 0;
+              drop_counter = Math.max(
+                drop_counter - 1,
+                0
+              );
           },
         },
         87: {
