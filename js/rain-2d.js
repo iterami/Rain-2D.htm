@@ -109,12 +109,10 @@ window.onload = function(e){
         },
         'mousemove': {
           'todo': function(){
-              if(!input_mouse['down']){
-                  return;
+              if(input_mouse['down']){
+                  object['x'] = input_mouse['x'];
+                  object['y'] = input_mouse['y'];
               }
-
-              object['x'] = input_mouse['x'];
-              object['y'] = input_mouse['y'];
           },
         },
       },
