@@ -35,7 +35,7 @@ function logic(){
     var loop_counter = drop_counter;
     do{
         drops.push({
-          'x': random_integer({
+          'x': core_random_integer({
             'max': canvas_width,
           }),
           'y': -99,
@@ -44,7 +44,7 @@ function logic(){
 
     // Update drop positions.
     for(var drop in drops){
-        drops[drop]['y'] += random_integer({
+        drops[drop]['y'] += core_random_integer({
           'max': 9,
         }) + 9;
 
