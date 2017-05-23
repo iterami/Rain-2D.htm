@@ -82,7 +82,7 @@ var object = {};
 
 window.onload = function(e){
     canvas_init();
-    input_init({
+    core_input_init({
       'keybinds': {
         27: {
           'todo': reset,
@@ -104,15 +104,15 @@ window.onload = function(e){
       'mousebinds': {
         'mousedown': {
           'todo': function(){
-              object['x'] = input_mouse['x'];
-              object['y'] = input_mouse['y'];
+              object['x'] = core_input_mouse['x'];
+              object['y'] = core_input_mouse['y'];
           },
         },
         'mousemove': {
           'todo': function(){
-              if(input_mouse['down']){
-                  object['x'] = input_mouse['x'];
-                  object['y'] = input_mouse['y'];
+              if(core_input_mouse['down']){
+                  object['x'] = core_input_mouse['x'];
+                  object['y'] = core_input_mouse['y'];
               }
           },
         },
