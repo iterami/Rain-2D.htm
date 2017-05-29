@@ -65,24 +65,8 @@ function logic(){
     }
 }
 
-function reset(){
-    drops.length = 0;
-    drop_counter = 0;
-    object = {
-      'height': -40,
-      'width': 200,
-      'x': canvas_width / 2,
-      'y': canvas_height / 2,
-    };
-}
-
-var drop_counter = 0;
-var drops = [];
-var object = {};
-
-window.onload = function(e){
-    canvas_init();
-    core_input_init({
+function repo_init(){
+    core_input_binds_add({
       'keybinds': {
         27: {
           'todo': reset,
@@ -118,6 +102,22 @@ window.onload = function(e){
         },
       },
     });
+    canvas_init();
 
     reset();
-};
+}
+
+function reset(){
+    drops.length = 0;
+    drop_counter = 0;
+    object = {
+      'height': -40,
+      'width': 200,
+      'x': canvas_width / 2,
+      'y': canvas_height / 2,
+    };
+}
+
+var drop_counter = 0;
+var drops = [];
+var object = {};
