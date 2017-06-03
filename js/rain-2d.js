@@ -66,7 +66,7 @@ function logic(){
 }
 
 function repo_init(){
-    core_input_binds_add({
+    core_events_bind({
       'keybinds': {
         27: {
           'todo': reset,
@@ -88,15 +88,15 @@ function repo_init(){
       'mousebinds': {
         'mousedown': {
           'todo': function(){
-              object['x'] = core_input_mouse['x'];
-              object['y'] = core_input_mouse['y'];
+              object['x'] = core_mouse['x'];
+              object['y'] = core_mouse['y'];
           },
         },
         'mousemove': {
           'todo': function(){
-              if(core_input_mouse['down']){
-                  object['x'] = core_input_mouse['x'];
-                  object['y'] = core_input_mouse['y'];
+              if(core_mouse['down']){
+                  object['x'] = core_mouse['x'];
+                  object['y'] = core_mouse['y'];
               }
           },
         },
