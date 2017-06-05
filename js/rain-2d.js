@@ -68,9 +68,6 @@ function logic(){
 function repo_init(){
     core_events_bind({
       'keybinds': {
-        27: {
-          'todo': reset,
-        },
         83: {
           'todo': function(){
               drop_counter = Math.max(
@@ -104,10 +101,6 @@ function repo_init(){
     });
     canvas_init();
 
-    reset();
-}
-
-function reset(){
     drops.length = 0;
     drop_counter = 0;
     object = {
