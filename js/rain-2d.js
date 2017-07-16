@@ -3,66 +3,90 @@
 function draw_logic(){
     // Draw drops.
     canvas_buffer.fillStyle = '#aaf';
-    for(var drop in drops){
-        canvas_buffer.fillRect(
-          drops[drop]['x'],
-          drops[drop]['y'],
-          2,
-          7
-        );
-    }
+    core_group_modify({
+      'groups': [
+        '_drop',
+      ],
+      'todo': function(entity){
+          canvas_buffer.fillRect(
+            core_entities[entity]['x'],
+            core_entities[entity]['y'],
+            2,
+            7
+          );
+      },
+    });
 
-    // Draw object.
+    // Draw objects.
     canvas_buffer.fillStyle = '#777';
-    canvas_buffer.fillRect(
-      object['x'],
-      object['y'],
-      object['width'],
-      object['height']
-    );
-
-    // Draw number of particles.
-    canvas_buffer.fillStyle = '#fff';
-    canvas_buffer.fillText(
-      drops.length,
-      object['x'],
-      object['y']
-    );
+    core_group_modify({
+      'groups': [
+        '_object',
+      ],
+      'todo': function(entity){
+          canvas_buffer.fillRect(
+            core_entities[entity]['x'],
+            core_entities[entity]['y'],
+            core_entities[entity]['width'],
+            core_entities[entity]['height']
+          );
+      },
+    });
 }
 
 function logic(){
     // Add some randomly placed drops.
     var loop_counter = drop_counter;
     do{
-        drops.push({
-          'x': core_random_integer({
-            'max': canvas_width,
-          }),
-          'y': -99,
+        core_entity_create({
+          'properties': {
+            'x': core_random_integer({
+              'max': canvas_width,
+            }),
+            'y': -99,
+          },
+          'types': [
+            'drop',
+          ],
         });
     }while(loop_counter--);
 
     // Update drop positions.
-    for(var drop in drops){
-        drops[drop]['y'] += core_random_integer({
-          'max': 9,
-        }) + 9;
+    core_group_modify({
+      'groups': [
+        '_drop',
+      ],
+      'todo': function(entity){
+          core_entities[entity]['y'] += core_random_integer({
+            'max': 9,
+          }) + 9;
 
-        // Delete drops below bottom of screen
-        //   or that collided with the object.
-        if(drops[drop]['y'] > canvas_height
-          || !(
-            drops[drop]['x'] <= object['x']
-            || drops[drop]['y'] - object['height'] <= object['y']
-            || drops[drop]['x'] - object['width'] >= object['x']
-            || drops[drop]['y'] >= object['y']
-          )){
-            drops.splice(
-              drop,
-              1
-            );
-        }
-    }
+          var remove = false;
+
+          if(core_entities[entity]['y'] > canvas_height){
+              remove = true;
+          }
+
+          /*for(var object_entity in core_groups['_object']){
+              if(!(core_entities[entity]['x'] <= core_entities[object_entity]['x']
+                || core_entities[entity]['y'] - core_entities[object_entity]['height'] <= core_entities[object_entity]['y']
+                || core_entities[entity]['x'] - core_entities[object_entity]['width'] >= core_entities[object_entity]['x']
+                || core_entities[entity]['y'] >= core_entities[object_entity]['y']
+              )){
+                  remove = true;
+                  break;
+              }
+          };*/
+
+          if(remove){
+              core_entity_remove({
+                'entities': [
+                  entity,
+                ],
+              });
+          }
+      },
+    });
 }
 
 function repo_init(){
@@ -82,36 +106,31 @@ function repo_init(){
           },
         },
       },
-      'mousebinds': {
-        'mousedown': {
-          'todo': function(){
-              object['x'] = core_mouse['x'];
-              object['y'] = core_mouse['y'];
-          },
-        },
-        'mousemove': {
-          'todo': function(){
-              if(core_mouse['down']){
-                  object['x'] = core_mouse['x'];
-                  object['y'] = core_mouse['y'];
-              }
-          },
-        },
-      },
       'title': 'Rain-2D.htm',
     });
+
+    core_entity_set({
+      'type': 'drop',
+    });
+    core_entity_set({
+      'properties': {
+        'height': 40,
+        'width': 200,
+      },
+      'type': 'object',
+    });
+
     canvas_init();
 
-    drops.length = 0;
-    drop_counter = 0;
-    object = {
-      'height': -40,
-      'width': 200,
-      'x': canvas_width / 2,
-      'y': canvas_height / 2,
-    };
+    /*core_entity_create({
+      'properties': {
+        'x': canvas_x,
+        'y': canvas_y,
+      },
+      'types': [
+        'object',
+      ],
+    });*/
 }
 
 var drop_counter = 0;
-var drops = [];
-var object = {};
