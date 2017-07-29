@@ -5,7 +5,7 @@ function draw_logic(){
     canvas_buffer.fillStyle = '#aaf';
     core_group_modify({
       'groups': [
-        '_drop',
+        'drop',
       ],
       'todo': function(entity){
           canvas_buffer.fillRect(
@@ -54,7 +54,7 @@ function logic(){
     // Update drop positions.
     core_group_modify({
       'groups': [
-        '_drop',
+        'drop',
       ],
       'todo': function(entity){
           core_entities[entity]['y'] += core_random_integer({
@@ -91,6 +91,15 @@ function logic(){
 
 function repo_init(){
     core_repo_init({
+      'entities': {
+        'drop': {},
+        'object': {
+          'properties': {
+            'height': 40,
+            'width': 200,
+          },
+        },
+      },
       'keybinds': {
         83: {
           'todo': function(){
@@ -108,18 +117,6 @@ function repo_init(){
       },
       'title': 'Rain-2D.htm',
     });
-
-    core_entity_set({
-      'type': 'drop',
-    });
-    core_entity_set({
-      'properties': {
-        'height': 40,
-        'width': 200,
-      },
-      'type': 'object',
-    });
-
     canvas_init();
 
     /*core_entity_create({
