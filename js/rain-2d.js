@@ -2,7 +2,11 @@
 
 function draw_logic(){
     // Draw drops.
-    canvas_buffer.fillStyle = '#aaf';
+    canvas_setproperties({
+      'properties': {
+        'fillStyle': '#aaf',
+      },
+    });
     core_group_modify({
       'groups': [
         'drop',
@@ -18,7 +22,11 @@ function draw_logic(){
     });
 
     // Draw objects.
-    canvas_buffer.fillStyle = '#777';
+    canvas_setproperties({
+      'properties': {
+        'fillStyle': '#777',
+      },
+    });
     core_group_modify({
       'groups': [
         'object',
