@@ -49,7 +49,7 @@ function logic(){
         core_entity_create({
           'properties': {
             'x': core_random_integer({
-              'max': canvas_width,
+              'max': canvas_properties['width'],
             }),
             'y': -99,
           },
@@ -71,7 +71,7 @@ function logic(){
 
           var remove = false;
 
-          if(core_entities[drop]['y'] > canvas_height){
+          if(core_entities[drop]['y'] > canvas_properties['height']){
               remove = true;
           }
 
