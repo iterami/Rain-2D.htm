@@ -3,8 +3,8 @@
 function load_data(){
     core_entity_create({
       'properties': {
-        'x': canvas_x,
-        'y': canvas_y,
+        'x': canvas_properties['width-half'],
+        'y': canvas_properties['height-half'],
       },
       'types': [
         'object',
