@@ -11,3 +11,5 @@ function load_data(){
       ],
     });
 }
+
+var drop_counter = 0;

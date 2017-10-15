@@ -134,5 +134,3 @@ function repo_init(){
     });
     canvas_init();
 }
-
-var drop_counter = 0;
