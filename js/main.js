@@ -115,6 +115,9 @@ function repo_init(){
           },
         },
       },
+      'globals': {
+        'drop_counter': 0,
+      },
       'keybinds': {
         83: {
           'todo': function(){
