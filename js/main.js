@@ -44,7 +44,7 @@ function draw_logic(){
 
 function logic(){
     // Add some randomly placed drops.
-    var loop_counter = drop_counter;
+    let loop_counter = drop_counter;
     do{
         core_entity_create({
           'properties': {
@@ -69,7 +69,7 @@ function logic(){
             'max': 9,
           }) + 9;
 
-          var remove = false;
+          let remove = false;
 
           if(core_entities[drop]['y'] > canvas_properties['height']){
               remove = true;
