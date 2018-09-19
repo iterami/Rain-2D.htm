@@ -117,6 +117,7 @@ function repo_init(){
       },
       'globals': {
         'drop_counter': 0,
+        'id_count': 0,
       },
       'keybinds': {
         83: {

@@ -2,6 +2,7 @@
 
 function load_data(){
     core_entity_create({
+      'id': id_count,
       'properties': {
         'x': canvas_properties['width-half'],
         'y': canvas_properties['height-half'],
@@ -10,4 +11,5 @@ function load_data(){
         'object',
       ],
     });
+    id_count++;
 }
