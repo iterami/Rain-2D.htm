@@ -47,6 +47,7 @@ function logic(){
     let loop_counter = drop_counter;
     do{
         core_entity_create({
+          'id': id_count,
           'properties': {
             'x': core_random_integer({
               'max': canvas_properties['width'],
@@ -57,6 +58,7 @@ function logic(){
             'drop',
           ],
         });
+        id_count++;
     }while(loop_counter--);
 
     // Update drop positions.
