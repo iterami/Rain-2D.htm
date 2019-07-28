@@ -7,14 +7,14 @@ function draw_logic(){
         'fillStyle': '#aaf',
       },
     });
-    core_group_modify({
+    entity_group_modify({
       'groups': [
         'drop',
       ],
       'todo': function(entity){
           canvas_buffer.fillRect(
-            core_entities[entity]['x'],
-            core_entities[entity]['y'],
+            entity_entities[entity]['x'],
+            entity_entities[entity]['y'],
             2,
             7
           );
@@ -27,16 +27,16 @@ function draw_logic(){
         'fillStyle': '#777',
       },
     });
-    core_group_modify({
+    entity_group_modify({
       'groups': [
         'object',
       ],
       'todo': function(entity){
           canvas_buffer.fillRect(
-            core_entities[entity]['x'],
-            core_entities[entity]['y'],
-            core_entities[entity]['width'],
-            core_entities[entity]['height']
+            entity_entities[entity]['x'],
+            entity_entities[entity]['y'],
+            entity_entities[entity]['width'],
+            entity_entities[entity]['height']
           );
       },
     });
@@ -46,7 +46,7 @@ function logic(){
     // Add some randomly placed drops.
     let loop_counter = drop_counter;
     do{
-        core_entity_create({
+        entity_create({
           'properties': {
             'x': core_random_integer({
               'max': canvas_properties['width'],
@@ -60,22 +60,22 @@ function logic(){
     }while(loop_counter--);
 
     // Update drop positions.
-    core_group_modify({
+    entity_group_modify({
       'groups': [
         'drop',
       ],
       'todo': function(drop){
-          core_entities[drop]['y'] += core_random_integer({
+          entity_entities[drop]['y'] += core_random_integer({
             'max': 9,
           }) + 9;
 
           let remove = false;
 
-          if(core_entities[drop]['y'] > canvas_properties['height']){
+          if(entity_entities[drop]['y'] > canvas_properties['height']){
               remove = true;
           }
 
-          core_group_modify({
+          entity_group_modify({
             'groups': [
               'object',
             ],
@@ -84,17 +84,17 @@ function logic(){
                     return;
                 }
 
-                if(core_entities[drop]['x'] > core_entities[entity]['x']
-                  && core_entities[drop]['x'] < core_entities[entity]['x'] + core_entities[entity]['width']
-                  && core_entities[drop]['y'] > core_entities[entity]['y']
-                  && core_entities[drop]['y'] < core_entities[entity]['y'] + core_entities[entity]['height']){
+                if(entity_entities[drop]['x'] > entity_entities[entity]['x']
+                  && entity_entities[drop]['x'] < entity_entities[entity]['x'] + entity_entities[entity]['width']
+                  && entity_entities[drop]['y'] > entity_entities[entity]['y']
+                  && entity_entities[drop]['y'] < entity_entities[entity]['y'] + entity_entities[entity]['height']){
                     remove = true;
                 }
             },
           });
 
           if(remove){
-              core_entity_remove({
+              entity_remove({
                 'entities': [
                   drop,
                 ],
@@ -106,15 +106,6 @@ function logic(){
 
 function repo_init(){
     core_repo_init({
-      'entities': {
-        'drop': {},
-        'object': {
-          'properties': {
-            'height': 40,
-            'width': 200,
-          },
-        },
-      },
       'globals': {
         'drop_counter': 0,
       },
@@ -134,6 +125,16 @@ function repo_init(){
         },
       },
       'title': 'Rain-2D.htm',
+    });
+    entity_set({
+      'properties': {
+        'height': 40,
+        'width': 200,
+      },
+      'type': 'object',
+    });
+    entity_set({
+      'type': 'drop',
     });
     canvas_init();
 }

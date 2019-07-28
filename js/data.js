@@ -1,7 +1,7 @@
 'use strict';
 
 function load_data(){
-    core_entity_create({
+    entity_create({
       'id': 'obstacle',
       'properties': {
         'x': canvas_properties['width-half'],
