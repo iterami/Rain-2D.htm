@@ -1,6 +1,6 @@
 'use strict';
 
-function draw_logic(){
+function repo_drawlogic(){
     // Draw drops.
     canvas_setproperties({
       'properties': {
@@ -42,7 +42,7 @@ function draw_logic(){
     });
 }
 
-function logic(){
+function repo_logic(){
     // Add some randomly placed drops.
     let loop_counter = drop_counter;
     do{
