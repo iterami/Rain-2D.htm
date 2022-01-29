@@ -1,7 +1,6 @@
 'use strict';
 
 function repo_drawlogic(){
-    // Draw drops.
     canvas_setproperties({
       'properties': {
         'fillStyle': '#aaf',
@@ -21,7 +20,6 @@ function repo_drawlogic(){
       },
     });
 
-    // Draw objects.
     canvas_setproperties({
       'properties': {
         'fillStyle': '#777',
@@ -43,7 +41,6 @@ function repo_drawlogic(){
 }
 
 function repo_logic(){
-    // Add some randomly placed drops.
     let loop_counter = drop_counter;
     do{
         entity_create({
@@ -59,7 +56,6 @@ function repo_logic(){
         });
     }while(loop_counter--);
 
-    // Update drop positions.
     entity_group_modify({
       'groups': [
         'drop',
