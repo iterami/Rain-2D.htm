@@ -24,7 +24,7 @@ function repo_drawlogic(){
         'drop',
       ],
       'todo': function(entity){
-          canvas_buffer.fillRect(
+          canvas.fillRect(
             entity_entities[entity]['x'],
             entity_entities[entity]['y'],
             2,
@@ -43,7 +43,7 @@ function repo_drawlogic(){
         'object',
       ],
       'todo': function(entity){
-          canvas_buffer.fillRect(
+          canvas.fillRect(
             entity_entities[entity]['x'],
             entity_entities[entity]['y'],
             entity_entities[entity]['width'],
