@@ -119,7 +119,7 @@ function repo_init(){
         'drop_counter': 0,
       },
       'keybinds': {
-        83: {
+        'KeyS': {
           'todo': function(){
               drop_counter = Math.max(
                 drop_counter - 1,
@@ -127,7 +127,7 @@ function repo_init(){
               );
           },
         },
-        87: {
+        'KeyW': {
           'todo': function(){
               drop_counter++;
           },
