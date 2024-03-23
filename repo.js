@@ -15,9 +15,7 @@ function load_data(){
 
 function repo_drawlogic(){
     canvas_setproperties({
-      'properties': {
-        'fillStyle': '#aaf',
-      },
+      'fillStyle': '#aaf',
     });
     entity_group_modify({
       'groups': [
@@ -34,9 +32,7 @@ function repo_drawlogic(){
     });
 
     canvas_setproperties({
-      'properties': {
-        'fillStyle': '#777',
-      },
+      'fillStyle': '#777',
     });
     entity_group_modify({
       'groups': [
