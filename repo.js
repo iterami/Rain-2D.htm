@@ -129,6 +129,14 @@ function repo_init(){
           },
         },
       },
+      'mousebinds': {
+        'mousedown': {
+          'todo': function(){
+              entity_entities['obstacle']['x'] = core_mouse['down-x'];
+              entity_entities['obstacle']['y'] = core_mouse['down-y'];
+          },
+        },
+      },
       'title': 'Rain-2D.htm',
     });
     entity_set({
