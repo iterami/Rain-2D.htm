@@ -130,10 +130,12 @@ function repo_init(){
         },
       },
       'mousebinds': {
-        'mousedown': {
+        'mousemove': {
           'todo': function(){
-              entity_entities['obstacle']['x'] = core_mouse['down-x'];
-              entity_entities['obstacle']['y'] = core_mouse['down-y'];
+              if(core_mouse['down-0']){
+                  entity_entities['obstacle']['x'] = core_mouse['x'];
+                  entity_entities['obstacle']['y'] = core_mouse['y'];
+              }
           },
         },
       },
