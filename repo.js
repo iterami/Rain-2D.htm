@@ -130,13 +130,11 @@ function repo_init(){
         },
       },
       'mousebinds': {
+        'mousedown': {
+          'todo': set_position,
+        },
         'mousemove': {
-          'todo': function(){
-              if(core_mouse['down-0']){
-                  entity_entities['obstacle']['x'] = core_mouse['x'];
-                  entity_entities['obstacle']['y'] = core_mouse['y'];
-              }
-          },
+          'todo': set_position,
         },
       },
       'title': 'Rain-2D.htm',
@@ -152,4 +150,13 @@ function repo_init(){
       'type': 'drop',
     });
     canvas_init();
+}
+
+function set_position(){
+    if(!core_mouse['down-0']){
+        return;
+    }
+
+    entity_entities['obstacle']['x'] = core_mouse['x'] - entity_entities['obstacle']['width'] / 2;
+    entity_entities['obstacle']['y'] = core_mouse['y'] - entity_entities['obstacle']['height'] / 2;
 }
