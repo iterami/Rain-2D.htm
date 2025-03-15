@@ -23,8 +23,8 @@ function repo_drawlogic(){
       ],
       'todo': function(entity){
           canvas.fillRect(
-            entity_entities[entity]['x'],
-            entity_entities[entity]['y'],
+            entity['x'],
+            entity['y'],
             2,
             7
           );
@@ -40,10 +40,10 @@ function repo_drawlogic(){
       ],
       'todo': function(entity){
           canvas.fillRect(
-            entity_entities[entity]['x'],
-            entity_entities[entity]['y'],
-            entity_entities[entity]['width'],
-            entity_entities[entity]['height']
+            entity['x'],
+            entity['y'],
+            entity['width'],
+            entity['height']
           );
       },
     });
@@ -70,13 +70,13 @@ function repo_logic(){
         'drop',
       ],
       'todo': function(drop){
-          entity_entities[drop]['y'] += core_random_integer({
+          drop['y'] += core_random_integer({
             'max': 9,
           }) + 9;
 
           let remove = false;
 
-          if(entity_entities[drop]['y'] > canvas_properties['height']){
+          if(drop['y'] > canvas_properties['height']){
               remove = true;
           }
 
@@ -89,10 +89,10 @@ function repo_logic(){
                     return;
                 }
 
-                if(entity_entities[drop]['x'] > entity_entities[entity]['x']
-                  && entity_entities[drop]['x'] < entity_entities[entity]['x'] + entity_entities[entity]['width']
-                  && entity_entities[drop]['y'] > entity_entities[entity]['y']
-                  && entity_entities[drop]['y'] < entity_entities[entity]['y'] + entity_entities[entity]['height']){
+                if(drop['x'] > entity['x']
+                  && drop['x'] < entity['x'] + entity['width']
+                  && drop['y'] > entity['y']
+                  && drop['y'] < entity['y'] + entity['height']){
                     remove = true;
                 }
             },
@@ -101,7 +101,7 @@ function repo_logic(){
           if(remove){
               entity_remove({
                 'entities': [
-                  drop,
+                  drop['id'],
                 ],
               });
           }
