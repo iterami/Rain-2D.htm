@@ -129,11 +129,11 @@ function repo_init(){
           },
         },
       },
-      'mousebinds': {
-        'mousedown': {
+      'pointerbinds': {
+        'pointerdown': {
           'todo': set_position,
         },
-        'mousemove': {
+        'pointermove': {
           'todo': set_position,
         },
       },
@@ -153,10 +153,10 @@ function repo_init(){
 }
 
 function set_position(){
-    if(!core_mouse['down-0']){
+    if(!core_pointer['down-0']){
         return;
     }
 
-    entity_entities['obstacle']['x'] = core_mouse['x'] - entity_entities['obstacle']['width'] / 2;
-    entity_entities['obstacle']['y'] = core_mouse['y'] - entity_entities['obstacle']['height'] / 2;
+    entity_entities['obstacle']['x'] = core_pointer['x'] - entity_entities['obstacle']['width'] / 2;
+    entity_entities['obstacle']['y'] = core_pointer['y'] - entity_entities['obstacle']['height'] / 2;
 }
