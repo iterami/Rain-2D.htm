@@ -49,6 +49,49 @@ function repo_drawlogic(){
     });
 }
 
+function repo_init(){
+    core_repo_init({
+      'globals': {
+        'drop_counter': 0,
+      },
+      'keybinds': {
+        'KeyS': {
+          'todo': function(){
+              drop_counter = Math.max(
+                drop_counter - 1,
+                0
+              );
+          },
+        },
+        'KeyW': {
+          'todo': function(){
+              drop_counter++;
+          },
+        },
+      },
+      'pointerbinds': {
+        'pointerdown': {
+          'todo': set_position,
+        },
+        'pointermove': {
+          'todo': set_position,
+        },
+      },
+      'title': 'Rain-2D.htm',
+    });
+    entity_set({
+      'properties': {
+        'height': 40,
+        'width': 200,
+      },
+      'type': 'object',
+    });
+    entity_set({
+      'type': 'drop',
+    });
+    canvas_init();
+}
+
 function repo_logic(){
     let loop_counter = drop_counter;
     do{
@@ -107,49 +150,6 @@ function repo_logic(){
           }
       },
     });
-}
-
-function repo_init(){
-    core_repo_init({
-      'globals': {
-        'drop_counter': 0,
-      },
-      'keybinds': {
-        'KeyS': {
-          'todo': function(){
-              drop_counter = Math.max(
-                drop_counter - 1,
-                0
-              );
-          },
-        },
-        'KeyW': {
-          'todo': function(){
-              drop_counter++;
-          },
-        },
-      },
-      'pointerbinds': {
-        'pointerdown': {
-          'todo': set_position,
-        },
-        'pointermove': {
-          'todo': set_position,
-        },
-      },
-      'title': 'Rain-2D.htm',
-    });
-    entity_set({
-      'properties': {
-        'height': 40,
-        'width': 200,
-      },
-      'type': 'object',
-    });
-    entity_set({
-      'type': 'drop',
-    });
-    canvas_init();
 }
 
 function set_position(){
