@@ -89,7 +89,9 @@ function repo_init(){
     entity_set({
       'type': 'drop',
     });
-    canvas_init();
+    canvas_init({
+      'cursor': 'pointer',
+    });
 }
 
 function repo_logic(){
