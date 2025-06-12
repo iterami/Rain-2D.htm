@@ -99,9 +99,7 @@ function repo_logic(){
     do{
         entity_create({
           'properties': {
-            'x': core_random_integer({
-              'max': canvas_properties['width'],
-            }),
+            'x': core_random_integer(canvas_properties['width']),
             'y': -99,
           },
           'types': [
@@ -115,9 +113,7 @@ function repo_logic(){
         'drop',
       ],
       'todo': function(drop){
-          drop['y'] += core_random_integer({
-            'max': 9,
-          }) + 9;
+          drop['y'] += core_random_integer(9) + 9;
 
           let remove = false;
 
