@@ -4,8 +4,8 @@ function load_data(){
     entity_create({
       'id': 'obstacle',
       'properties': {
-        'x': canvas_properties['width-half'],
-        'y': canvas_properties['height-half'],
+        'x': canvas_properties.width_half,
+        'y': canvas_properties.height_half,
       },
       'types': [
         'object',
@@ -23,8 +23,8 @@ function repo_drawlogic(){
       ],
       'todo': function(entity){
           canvas.fillRect(
-            entity['x'],
-            entity['y'],
+            entity.x,
+            entity.y,
             2,
             7
           );
@@ -40,10 +40,10 @@ function repo_drawlogic(){
       ],
       'todo': function(entity){
           canvas.fillRect(
-            entity['x'],
-            entity['y'],
-            entity['width'],
-            entity['height']
+            entity.x,
+            entity.y,
+            entity.width,
+            entity.height
           );
       },
     });
@@ -99,7 +99,7 @@ function repo_logic(){
     do{
         entity_create({
           'properties': {
-            'x': core_random_integer(canvas_properties['width']),
+            'x': core_random_integer(canvas_properties.width),
             'y': -99,
           },
           'types': [
@@ -113,11 +113,11 @@ function repo_logic(){
         'drop',
       ],
       'todo': function(drop){
-          drop['y'] += core_random_integer(9) + 9;
+          drop.y += core_random_integer(9) + 9;
 
           let remove = false;
 
-          if(drop['y'] > canvas_properties['height']){
+          if(drop.y > canvas_properties.height){
               remove = true;
           }
 
@@ -130,10 +130,10 @@ function repo_logic(){
                     return;
                 }
 
-                if(drop['x'] > entity['x']
-                  && drop['x'] < entity['x'] + entity['width']
-                  && drop['y'] > entity['y']
-                  && drop['y'] < entity['y'] + entity['height']){
+                if(drop.x > entity.x
+                  && drop.x < entity.x + entity.width
+                  && drop.y > entity.y
+                  && drop.y < entity.y + entity.height){
                     remove = true;
                 }
             },
@@ -142,7 +142,7 @@ function repo_logic(){
           if(remove){
               entity_remove({
                 'entities': [
-                  drop['id'],
+                  drop.id,
                 ],
               });
           }
@@ -155,6 +155,6 @@ function set_position(){
         return;
     }
 
-    entity_entities['obstacle']['x'] = core_pointer['x'] - entity_entities['obstacle']['width'] / 2;
-    entity_entities['obstacle']['y'] = core_pointer['y'] - entity_entities['obstacle']['height'] / 2;
+    entity_entities.obstacle.x = core_pointer.x - entity_entities.obstacle.width / 2;
+    entity_entities.obstacle.y = core_pointer.y - entity_entities.obstacle.height / 2;
 }
