@@ -151,7 +151,7 @@ function repo_logic(){
 }
 
 function set_position(){
-    if(!core_pointer['down-0']){
+    if(!core_pointer.down_0){
         return;
     }
 
