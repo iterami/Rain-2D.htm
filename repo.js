@@ -56,7 +56,7 @@ function repo_init(){
       },
       'keybinds': {
         'KeyS': {
-          'todo': function(){
+          'down': function(){
               drop_counter = Math.max(
                 drop_counter - 1,
                 0
@@ -64,7 +64,7 @@ function repo_init(){
           },
         },
         'KeyW': {
-          'todo': function(){
+          'down': function(){
               drop_counter++;
           },
         },
