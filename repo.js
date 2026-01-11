@@ -1,18 +1,5 @@
 'use strict';
 
-function load_data(){
-    entity_create({
-      'id': 'obstacle',
-      'properties': {
-        'x': canvas_properties.width_half,
-        'y': canvas_properties.height_half,
-      },
-      'types': [
-        'object',
-      ],
-    });
-}
-
 function repo_drawlogic(){
     canvas_setproperties({
       'fillStyle': '#aaf',
@@ -91,6 +78,19 @@ function repo_init(){
     });
     canvas_init({
       'cursor': 'pointer',
+    });
+}
+
+function repo_load(){
+    entity_create({
+      'id': 'obstacle',
+      'properties': {
+        'x': canvas_properties.width_half,
+        'y': canvas_properties.height_half,
+      },
+      'types': [
+        'object',
+      ],
     });
 }
 
