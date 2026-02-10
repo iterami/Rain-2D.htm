@@ -1,5 +1,61 @@
 'use strict';
 
+function check_collision(drop){
+    let remove = false;
+
+    entity_group_modify({
+      'groups': [
+        'object',
+      ],
+      'todo': function(entity){
+          if(remove){
+              return;
+          }
+
+          if(drop.x > entity.x
+            && drop.x < entity.x + entity.width
+            && drop.y > entity.y
+            && drop.y < entity.y + entity.height){
+              remove = true;
+          }
+      },
+    });
+
+    return remove;
+}
+
+function draw_drop(entity){
+    canvas.fillRect(
+      entity.x,
+      entity.y,
+      2,
+      7
+    );
+}
+
+function draw_object(entity){
+    canvas.fillRect(
+      entity.x,
+      entity.y,
+      entity.width,
+      entity.height
+    );
+}
+
+function move_drop(drop){
+    drop.y += core_random_integer(9) + 9;
+
+    const remove = drop.y > canvas_properties.height
+      || check_collision(drop);
+    if(remove){
+        entity_remove({
+          'entities': [
+            drop.id,
+          ],
+        });
+    }
+}
+
 function repo_drawlogic(){
     canvas_setproperties({
       'fillStyle': '#aaf',
@@ -8,14 +64,7 @@ function repo_drawlogic(){
       'groups': [
         'drop',
       ],
-      'todo': function(entity){
-          canvas.fillRect(
-            entity.x,
-            entity.y,
-            2,
-            7
-          );
-      },
+      'todo': draw_drop,
     });
 
     canvas_setproperties({
@@ -25,14 +74,7 @@ function repo_drawlogic(){
       'groups': [
         'object',
       ],
-      'todo': function(entity){
-          canvas.fillRect(
-            entity.x,
-            entity.y,
-            entity.width,
-            entity.height
-          );
-      },
+      'todo': draw_object,
     });
 }
 
@@ -112,41 +154,7 @@ function repo_logic(){
       'groups': [
         'drop',
       ],
-      'todo': function(drop){
-          drop.y += core_random_integer(9) + 9;
-
-          let remove = false;
-
-          if(drop.y > canvas_properties.height){
-              remove = true;
-          }
-
-          entity_group_modify({
-            'groups': [
-              'object',
-            ],
-            'todo': function(entity){
-                if(remove){
-                    return;
-                }
-
-                if(drop.x > entity.x
-                  && drop.x < entity.x + entity.width
-                  && drop.y > entity.y
-                  && drop.y < entity.y + entity.height){
-                    remove = true;
-                }
-            },
-          });
-
-          if(remove){
-              entity_remove({
-                'entities': [
-                  drop.id,
-                ],
-              });
-          }
-      },
+      'todo': move_drop,
     });
 }
 
