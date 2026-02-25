@@ -81,7 +81,7 @@ function repo_drawlogic(){
 function repo_init(){
     core_repo_init({
       'globals': {
-        'drop_counter': 0,
+        'drop_counter': 1,
       },
       'keybinds': {
         'KeyS': {
@@ -137,8 +137,7 @@ function repo_load(){
 }
 
 function repo_logic(){
-    let loop_counter = drop_counter;
-    do{
+    for(let i = 0; i < drop_counter; i++){
         entity_create({
           'properties': {
             'x': core_random_integer(canvas_properties.width),
@@ -148,7 +147,7 @@ function repo_logic(){
             'drop',
           ],
         });
-    }while(loop_counter--);
+    }
 
     entity_group_modify({
       'groups': [
