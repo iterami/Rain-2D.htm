@@ -4,9 +4,7 @@ function check_collision(drop){
     let remove = false;
 
     entity_group_modify({
-      'groups': [
-        'object',
-      ],
+      'groups': ['object'],
       'todo': function(entity){
           if(remove){
               return;
@@ -49,9 +47,7 @@ function move_drop(drop){
       || check_collision(drop);
     if(remove){
         entity_remove({
-          'entities': [
-            drop.id,
-          ],
+          'entities': [drop.id],
         });
     }
 }
@@ -61,9 +57,7 @@ function repo_drawlogic(){
       'fillStyle': '#aaf',
     });
     entity_group_modify({
-      'groups': [
-        'drop',
-      ],
+      'groups': ['drop'],
       'todo': draw_drop,
     });
 
@@ -71,9 +65,7 @@ function repo_drawlogic(){
       'fillStyle': '#777',
     });
     entity_group_modify({
-      'groups': [
-        'object',
-      ],
+      'groups': ['object'],
       'todo': draw_object,
     });
 }
@@ -99,12 +91,8 @@ function repo_init(){
         },
       },
       'pointerbinds': {
-        'pointerdown': {
-          'todo': set_position,
-        },
-        'pointermove': {
-          'todo': set_position,
-        },
+        'pointerdown': set_position,
+        'pointermove': set_position,
       },
       'title': 'Rain-2D.htm',
     });
@@ -130,9 +118,7 @@ function repo_load(){
         'x': canvas_properties.width_half,
         'y': canvas_properties.height_half,
       },
-      'types': [
-        'object',
-      ],
+      'types': ['object'],
     });
 }
 
@@ -143,16 +129,12 @@ function repo_logic(){
             'x': core_random_integer(canvas_properties.width),
             'y': -99,
           },
-          'types': [
-            'drop',
-          ],
+          'types': ['drop'],
         });
     }
 
     entity_group_modify({
-      'groups': [
-        'drop',
-      ],
+      'groups': ['drop'],
       'todo': move_drop,
     });
 }
